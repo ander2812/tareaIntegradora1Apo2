@@ -12,10 +12,10 @@ public class Update {
     Main main;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    Client client = new Client("", "", "", "", "");
-    Restaurant myRestaurant = new Restaurant("", "", "");
+    App application;
 
-    public Update() {
+    public Update(App application) {
+        this.application = application;
 
     }
 
@@ -24,7 +24,7 @@ public class Update {
         String clientId2 = br.readLine();
         System.out.println(" ");
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < myRestaurant.getTheClients().size(); i++) {
 
             if (clientId2.equalsIgnoreCase(myRestaurant.getTheClients().get(i).getClientId())) {
 
@@ -70,8 +70,6 @@ public class Update {
                         break;
 
                 }
-            } else if (clientId2 != myRestaurant.getTheClients().get(i).getClientId()) {
-                System.out.println("client ID is not fund");
             }
 
         }
@@ -80,12 +78,12 @@ public class Update {
 
     public void updateInformationRestaurant() throws NumberFormatException, IOException {
         System.out.println("please enter the ID of the restaurant you want update");
-        String id2 = br.readLine();
+        String id = br.readLine();
         System.out.println(" ");
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
 
-            if (id2.equalsIgnoreCase(myRestaurant.getTheRestaurant().get(i).getId())) {
+            if (id.equals(application.getTheRestaurants().get(i).getId())) {
 
                 System.out.println(
                         "please enter the information of the restaurant you want to update \n\n (1) name \n (2) ID \n (3) name of administrator");
@@ -95,31 +93,27 @@ public class Update {
                     case 1:
                         System.out.println("enter the new name");
                         String name = br.readLine();
-                        myRestaurant.getTheRestaurant().get(i).setName(name);
+                        application.getTheRestaurants().get(i).setName(name);
                         System.out.println("the restaurant information is update successfully");
 
                         break;
 
                     case 2:
                         System.out.println("enter the new ID");
-                        String id = br.readLine();
-                        myRestaurant.getTheRestaurant().get(i).setId(id);
-                        ;
+                        String newId = br.readLine();
+                        application.getTheRestaurants().get(i).setId(newId);
                         System.out.println("the restaurant information is update successfully");
                         break;
 
                     case 3:
                         System.out.println("enter the new name of administrator");
                         String nameOfAdministrator = br.readLine();
-                        myRestaurant.getTheRestaurant().get(i).setNameOfAdministrator(nameOfAdministrator);
-                        ;
+                        application.getTheRestaurants().get(i).setNameOfAdministrator(nameOfAdministrator);
+
                         System.out.println("the restaurant information is update successfully");
                         break;
-
                 }
 
-            } else if (id2 != myRestaurant.getTheClients().get(i).getClientId()) {
-                System.out.println("restaurant ID is not fund");
             }
 
         }
@@ -127,60 +121,63 @@ public class Update {
     }
 
     public void updateInformationProduct() throws NumberFormatException, IOException {
-        System.out.println("please enter the ID of the client you want update");
-        String clientId2 = br.readLine();
+        System.out.println("please enter the code of the product you want update");
+        String code  = br.readLine();
         System.out.println(" ");
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
 
-            if (clientId2.equalsIgnoreCase(myRestaurant.getTheClients().get(i).getClientId())) {
-
-                System.out.println(
+            for (int j = 0; j <application.getTheRestaurants().get(i).getTheProduct()
+            .size(); j++) {
+                
+                if((code.equalsIgnoreCase(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode())){
+                    System.out.println(
                         "please enter the information of the product you want to update \n\n (1) code \n (2) name \n (3) description \n (4) coste \n (5) idOfRestaurant");
                 int opt = Integer.parseInt(br.readLine());
 
                 switch (opt) {
                     case 1:
                         System.out.println("enter the new code");
-                        String code = br.readLine();
-                        myRestaurant.getTheProduct().get(i).setCode(code);
-                        System.out.println("the product information is update successfully"); 
+                        String newCode = br.readLine();
+                        application.getTheRestaurants().get(i).getTheProduct().get(j).setCode(newCode);
+                        System.out.println("the product information is update successfully");
 
                         break;
 
                     case 2:
                         System.out.println("enter the new name");
                         String name = br.readLine();
-                        myRestaurant.getTheProduct().get(i).setName(name);
+                        application.getTheRestaurants().get(i).getTheProduct().get(j).setName(name);;
                         System.out.println("the product information is update successfully");
                         break;
 
                     case 3:
                         System.out.println("enter the new description");
                         String description = br.readLine();
-                        myRestaurant.getTheProduct().get(i).setDescription(description);
+                        application.getTheRestaurants().get(i).getTheProduct().get(j).setDescription(description);
                         System.out.println("the product information is update successfully");
                         break;
 
                     case 4:
                         System.out.println("enter the new coste");
                         double coste = Double.parseDouble(br.readLine());
-                        myRestaurant.getTheProduct().get(i).setCoste(coste);
+                        application.getTheRestaurants().get(i).getTheProduct().get(j).setCoste(coste);
                         System.out.println("the product information is update successfully");
                         break;
 
                     case 5:
                         System.out.println("enter the new ID of restaurant");
                         String idOfRestaurant = br.readLine();
-                        myRestaurant.getTheProduct().get(i).setIdOfRestaurant(idOfRestaurant);
+                        application.getTheRestaurants().get(i).getTheProduct().get(j).setIdOfRestaurant(idOfRestaurant);
                         System.out.println("the product information is update successfully");
                         break;
 
                 }
 
-            } else if (clientId2 != myRestaurant.getTheClients().get(i).getClientId()) {
+                }
             }
-            System.out.println("product ID is not fund");
+
+           
         }
     }
 
@@ -189,40 +186,40 @@ public class Update {
         String orderCode2 = br.readLine();
         System.out.println(" ");
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < application.getTheOrders().size(); i++) {
 
-            if (orderCode2.equalsIgnoreCase(myRestaurant.getTheClients().get(i).getTheOrders().get(i).getOrderCode())) {
+            if (orderCode2.equals(application.getTheOrders().get(i).getOrderCode())) {
 
                 System.out.println(
-                        "please enter the information of the order you want to update \n\n (1) order code \n (2) client ID \n (3) restaurant ID \n (4) order status");
+                        "please enter the information of the order you want to update \n\n (1) client ID \n (2) restaurant ID \n (3) order status");
                 int opt = Integer.parseInt(br.readLine());
 
                 switch (opt) {
-                    case 1:
-                        System.out.println("enter the new order code");
-                        String orderCode = br.readLine();
-                        myRestaurant.getTheClients().get(i).getTheOrders().get(i).setOrderCode(orderCode);
-                        System.out.println("the order information is update successfully");
 
+                    case 1:
+                        System.out.println("enter the new client ID");
+                        String clientId = br.readLine();
+                        application.getTheOrders().get(i).setClientId(clientId);
+                        System.out.println("the order information is update successfully");
                         break;
 
                     case 2:
-                        System.out.println("enter the new client ID");
-                        String clientId = br.readLine();
-                        myRestaurant.getTheClients().get(i).getTheOrders().get(i).setClientId(clientId);
-                        System.out.println("the order information is update successfully");
-                        break;
-
-                    case 3:
                         System.out.println("enter the new restaurant ID");
                         String restaurantId = br.readLine();
-                        myRestaurant.getTheClients().get(i).getTheOrders().get(i).setRestaurantId(restaurantId);
+                        application.getTheOrders().get(i).setRestaurantId(restaurantId);
                         System.out.println("the client information is update successfully");
                         break;
 
+                        case 3:
+                        System.out.println("enter the new order status");
+                        String orderStatus = br.readLine();
+
+                        if()
+                        application.getTheOrders().get(i).setOrderStatus(orderStatus);
+                        System.out.println("the order information is update successfully");
+                        break;
+
                 }
-            } else if (orderCode2 != myRestaurant.getTheClients().get(i).getClientId()) {
-                System.out.println("client ID is not fund");
             }
 
         }

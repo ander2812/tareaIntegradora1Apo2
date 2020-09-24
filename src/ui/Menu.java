@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import model.*;
 
 public class Menu {
     Main main;
@@ -12,16 +13,18 @@ public class Menu {
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     Register register;
     Update update;
+    App application;
 
     public Menu() throws NumberFormatException, IOException {
-        register = new Register();
-        update = new Update();
+        application = new App();
+        register = new Register(application);
+        update = new Update(application);
         pMenu();
     }
 
     public void pMenu() throws NumberFormatException, IOException {
         System.out.println(
-                "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) change Order status \n (6) Update \n (7) Save information \n (8) print \n (9) import \n (10) closed");
+                "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8) import \n (9) closed");
         int opt = Integer.parseInt(br.readLine());
 
         switch (opt) {
@@ -44,16 +47,10 @@ public class Menu {
                 break;
 
             case 5:
-                register.updateOrderStatus();
-
-                break;
-
-            case 6:
-                System.out.println(
-                        "please enter the option \n\n (1) Update restaurant data \n (2) Update product data \n (3) update client data \n (4) update order data");
-                int opt2 = Integer.parseInt(br.readLine());
+                System.out.println("please enter the option \n\n (1) Update restaurant data \n (2) Update product data \n (3) update client data \n (4) update order data \n (5) back to main menu");
+                opt = Integer.parseInt(br.readLine());
                 System.out.println(" ");
-                switch (opt2) {
+                switch (opt) {
                     case 1:
                         update.updateInformationRestaurant();
 
