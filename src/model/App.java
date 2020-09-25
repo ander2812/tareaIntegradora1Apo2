@@ -7,6 +7,7 @@ public class App {
     private List<Restaurant> theRestaurants;
     private List<Client> theClients;
     private List<Order>  theOrders;
+    private static App application;
 
     public App(){
         theClients = new ArrayList<>();
@@ -16,7 +17,20 @@ public class App {
         theClients.add(new Client("Andrea", "cc", "1234567", "12345", "aasdf"));
         theClients.add(new Client("Julian", "cc", "12345678", "12345", "aasdf"));
 
+        theRestaurants.add(new Restaurant("crepes", "12345678", "Andrea"));
+        theRestaurants.add(new Restaurant("wafles", "123456", "Paola"));
+        theRestaurants.add(new Restaurant("sr wok", "1234567", "Andrea"));
+        theRestaurants.add(new Restaurant("sushi", "12345", "Andrea"));
 
+
+
+    }
+
+    public static App getInstance(){
+        if(application == null){
+            application = new App();
+        }
+        return application;
     }
 
     public void addClient(String name, String typeId, String id, String telephone, String address ){

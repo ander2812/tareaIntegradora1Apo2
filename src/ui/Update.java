@@ -24,9 +24,9 @@ public class Update {
         String clientId2 = br.readLine();
         System.out.println(" ");
 
-        for (int i = 0; i < myRestaurant.getTheClients().size(); i++) {
+        for (int i = 0; i < application.getTheClients().size(); i++) {
 
-            if (clientId2.equalsIgnoreCase(myRestaurant.getTheClients().get(i).getClientId())) {
+            if (clientId2.equalsIgnoreCase(application.getTheClients().get(i).getClientId())) {
 
                 System.out.println(
                         "please enter the information of the client you want to update \n\n (1) name \n (2) type ID \n (3) client ID \n (4) telephone \n (5) address");
@@ -36,7 +36,7 @@ public class Update {
                     case 1:
                         System.out.println("enter the new name");
                         String name = br.readLine();
-                        myRestaurant.getTheClients().get(i).setName(name);
+                        application.getTheClients().get(i).setName(name);
                         System.out.println("the client information is update successfully");
 
                         break;
@@ -44,28 +44,28 @@ public class Update {
                     case 2:
                         System.out.println("enter the new type ID");
                         String typeId = br.readLine();
-                        myRestaurant.getTheClients().get(i).setTypeId(typeId);
+                        application.getTheClients().get(i).setTypeId(typeId);
                         System.out.println("the client information is update successfully");
                         break;
 
                     case 3:
                         System.out.println("enter the new client ID");
                         String clientId = br.readLine();
-                        myRestaurant.getTheClients().get(i).setClientId(clientId);
+                        application.getTheClients().get(i).setClientId(clientId);
                         System.out.println("the client information is update successfully");
                         break;
 
                     case 4:
                         System.out.println("enter the new telephone");
                         String telephone = br.readLine();
-                        myRestaurant.getTheClients().get(i).setTelephone(telephone);
+                        application.getTheClients().get(i).setTelephone(telephone);
                         System.out.println("the client information is update successfully");
                         break;
 
                     case 5:
                         System.out.println("enter the new address");
                         String address = br.readLine();
-                        myRestaurant.getTheClients().get(i).setAddress(address);
+                        application.getTheClients().get(i).setAddress(address);
                         System.out.println("the client information is update successfully");
                         break;
 
@@ -130,7 +130,7 @@ public class Update {
             for (int j = 0; j <application.getTheRestaurants().get(i).getTheProduct()
             .size(); j++) {
                 
-                if((code.equalsIgnoreCase(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode())){
+                if((code.equalsIgnoreCase(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode()))){
                     System.out.println(
                         "please enter the information of the product you want to update \n\n (1) code \n (2) name \n (3) description \n (4) coste \n (5) idOfRestaurant");
                 int opt = Integer.parseInt(br.readLine());
@@ -214,7 +214,7 @@ public class Update {
                         System.out.println("enter the new order status");
                         String orderStatus = br.readLine();
 
-                        if()
+                        
                         application.getTheOrders().get(i).setOrderStatus(orderStatus);
                         System.out.println("the order information is update successfully");
                         break;

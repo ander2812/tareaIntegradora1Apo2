@@ -23,72 +23,92 @@ public class Menu {
     }
 
     public void pMenu() throws NumberFormatException, IOException {
-        System.out.println(
-                "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8) import \n (9) closed");
-        int opt = Integer.parseInt(br.readLine());
 
-        switch (opt) {
-            case 1:
-                register.regClient();
+        int opt;
 
-                break;
+        do {
 
-            case 2:
-                register.registerProduct();
-                break;
+            System.out.println(
+                    "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8) import \n (9) to list \n (10) closed");
+            opt = Integer.parseInt(br.readLine());
 
-            case 3:
-                register.regOrder();
-                break;
+            switch (opt) {
+                case 1:
+                    register.regClient();
 
-            case 4:
-                register.registerRestaurant();
+                    break;
 
-                break;
+                case 2:
+                    register.registerProduct();
+                    break;
 
-            case 5:
-                System.out.println("please enter the option \n\n (1) Update restaurant data \n (2) Update product data \n (3) update client data \n (4) update order data \n (5) back to main menu");
-                opt = Integer.parseInt(br.readLine());
-                System.out.println(" ");
-                switch (opt) {
-                    case 1:
-                        update.updateInformationRestaurant();
+                case 3:
+                    register.regOrder();
+                    break;
 
-                        break;
+                case 4:
+                    register.registerRestaurant();
 
-                    case 2:
-                        update.updateInformationProduct();
+                    break;
 
-                        break;
+                case 5:
+                    System.out.println(
+                            "please enter the option \n\n (1) Update restaurant data \n (2) Update product data \n (3) update client data \n (4) update order data \n (5) back to main menu");
+                    opt = Integer.parseInt(br.readLine());
+                    System.out.println(" ");
+                    switch (opt) {
+                        case 1:
+                            update.updateInformationRestaurant();
 
-                    case 3:
-                        update.updateInformationClient();
+                            break;
 
-                        break;
+                        case 2:
+                            update.updateInformationProduct();
 
-                    case 4:
-                        update.updateInformationOrder();
+                            break;
 
-                        break;
-                }
+                        case 3:
+                            update.updateInformationClient();
 
-                break;
+                            break;
 
-            case 7:
-                break;
+                        case 4:
+                            update.updateInformationOrder();
 
-            case 8:
-                break;
+                            break;
+                    }
 
-            case 9:
-                break;
+                    break;
 
-            case 10:
-                break;
+                case 7:
+                    break;
 
-            case 11:
-                break;
-        }
+                case 8:
+                    break;
+
+                case 9:
+                    System.out
+                            .println("please enter the information you want to list \n\n (1) Restaurant \n (2) Client");
+                    opt = Integer.parseInt(br.readLine());
+
+                    switch (opt) {
+                        case 1:
+                        register.restaurantList();
+
+                            break;
+
+                        case 2:
+                        register.clientList();
+                            break;
+                    }
+                    break;
+
+                case 10:
+                System.out.println("-------------thanks for using our services----------------");
+                    break;
+            }
+
+        } while (opt != 10);
 
     }
 

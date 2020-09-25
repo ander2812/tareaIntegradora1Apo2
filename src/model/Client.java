@@ -1,7 +1,7 @@
 package model;
-import java.util.ArrayList;
-import java.util.List;
-public class Client{
+import java.util.Collections;
+
+public class Client implements Comparable<Client> {
 
     private String typeId;
     private String clientId;
@@ -56,5 +56,20 @@ public class Client{
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    @Override
+    public int compareTo(Client otherClient) {
+        int comp;
+        if(name.charAt(0) < otherClient.getName().charAt(0)){
+            comp = 1;
+
+        }else if(name.charAt(0) > otherClient.getName().charAt(0)){
+            comp = -1;
+        }else{
+            comp = 0;
+        }
+        return comp;
+
+    }  
+
 }

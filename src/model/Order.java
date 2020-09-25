@@ -7,6 +7,10 @@ public class Order {
     public Date date;
     public String clientId;
     public String restaurantId;
+    public final static String ENTREGADO="entregado";
+    public final static String EN_PROCESO="en proceso";
+    public final static String ENVIADO="enviado";
+
     public String orderStatus;
 
     public Order(String orderCode, String orderStatus, Date date, String clientId, String restaurantId) {
@@ -56,6 +60,18 @@ public class Order {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public static String getEntregado() {
+        return ENTREGADO;
+    }
+
+    public static String getEnProceso() {
+        return EN_PROCESO;
+    }
+
+    public static String getEnviado() {
+        return ENVIADO;
     }
     
 }
