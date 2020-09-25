@@ -1,15 +1,18 @@
 package model;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class App {
     private List<Restaurant> theRestaurants;
     private List<Client> theClients;
-    private List<Order>  theOrders;
+    private List<Order> theOrders;
     private static App application;
 
-    public App(){
+    public App() {
         theClients = new ArrayList<>();
         theRestaurants = new ArrayList<>();
         theClients.add(new Client("paola", "cc", "12345", "12345", "aasdf"));
@@ -22,59 +25,51 @@ public class App {
         theRestaurants.add(new Restaurant("sr wok", "1234567", "Andrea"));
         theRestaurants.add(new Restaurant("sushi", "12345", "Andrea"));
 
-
-
     }
 
-    public static App getInstance(){
-        if(application == null){
+    public static App getInstance() {
+        if (application == null) {
             application = new App();
         }
         return application;
     }
 
-    public void addClient(String name, String typeId, String id, String telephone, String address ){
+    public void addClient(String name, String typeId, String id, String telephone, String address) {
 
         Client client = new Client(name, typeId, id, telephone, address);
 
         theClients.add(client);
 
-
-        
     }
 
-    public void addProductToARestaurant(String restarantId, Product theNewProduct){
+    public void addProductToARestaurant(String restarantId, Product theNewProduct) {
 
         for (int i = 0; i < theRestaurants.size(); i++) {
-            if(theRestaurants.get(i).getId().equals(restarantId)){
+            if (theRestaurants.get(i).getId().equals(restarantId)) {
                 theRestaurants.get(i).addProduct(theNewProduct);
             }
         }
 
     }
 
-    public void addOrder(Order theNewOrder){
+    public void addOrder(Order theNewOrder) {
 
         theOrders.add(theNewOrder);
 
     }
 
-
-
-    public void addRestaurant(String name, String id, String nameOfAdministrator){
+    public void addRestaurant(String name, String id, String nameOfAdministrator) {
         Restaurant restaurant = new Restaurant(name, id, nameOfAdministrator);
         theRestaurants.add(restaurant);
     }
 
-    public void addOrder(String orderCode, String orderStatus, Date date, String clientId,String restaurantId){
+    public void addOrder(String orderCode, String orderStatus, Date date, String clientId, String restaurantId) {
         Order order = new Order(orderCode, orderStatus, date, clientId, restaurantId);
         theOrders.add(order);
 
-
-
     }
 
-    public void addRestaurant(Restaurant theNewRestaurant){
+    public void addRestaurant(Restaurant theNewRestaurant) {
         theRestaurants.add(theNewRestaurant);
 
     }
@@ -103,10 +98,9 @@ public class App {
         this.theOrders = theOrders;
     }
 
+    public void sortByName() {
+        NameComparator nc = new NameComparator();
+        Collections.sort(theClients, nc);
+    }
 
-    
-
-
-
-    
 }

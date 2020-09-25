@@ -1,5 +1,4 @@
 package model;
-import java.util.Collections;
 
 public class Client implements Comparable<Client> {
 
@@ -70,6 +69,8 @@ public class Client implements Comparable<Client> {
         }
         return comp;
 
-    }  
+     }  
+
+     
 
 }

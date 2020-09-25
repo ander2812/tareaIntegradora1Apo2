@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Collections;
 
 public class Register {
     Main main;
@@ -37,6 +38,9 @@ public class Register {
             String address = br.readLine();
 
             application.addClient(name, typeId, id, telephone, address);
+
+            application.sortByName();
+           
 
             System.out.println("the client has been register successfully");
             System.out.println(" ");
@@ -118,7 +122,9 @@ public class Register {
     }
 
     public void clientList(){
-        for (int i = 0; i < application.getTheClients().size(); i++) {
+
+            application.sortByName();
+            for (int i = 0; i < application.getTheClients().size(); i++) {
             Client client = application.getTheClients().get(i);
 
             System.out.println("the client's name is: " + client.getName());
