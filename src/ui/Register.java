@@ -137,6 +137,26 @@ public class Register {
         }
     }
 
+    public void productList() {
+
+        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
+            for (int j = 0; j < application.getTheRestaurants().get(i).getTheProduct().size(); j++) {
+                Product product = application.getTheRestaurants().get(i).getTheProduct().get(j);
+
+                System.out.println("the products's name is: " + product.getName());
+                System.out.println("the product's code is: " + product.getCode());
+                System.out.println("the products's especification is: " + product.getDescription());
+                System.out.println("the product's coste is: " + product.getCoste());
+                System.out.println(" ");
+
+                application.getTheRestaurants().get(i).bubbleSortProduct();
+
+            }
+
+        }
+
+    }
+
     public void clientList() {
         application.sortByTelephone();
         for (int i = 0; i < application.getTheClients().size(); i++) {
@@ -162,7 +182,7 @@ public class Register {
 
         for (int i = 0; i < application.getTheClients().size(); i++) {
 
-            if(name.equals(application.getTheClients().get(i).getClientId())){
+            if (name.equals(application.getTheClients().get(i).getClientId())) {
 
                 System.out.println("the search client is: ");
                 System.out.println(" ");
@@ -176,19 +196,15 @@ public class Register {
                 System.out.println("the clients addres is: " + client.getAddress());
                 System.out.println(" ");
 
-                
                 double endTime = System.currentTimeMillis();
                 double duration = (endTime - startTime);
 
                 System.out.println("the search duration is: " + duration);
 
-
-
             }
-            
+
         }
 
-       
     }
 
 }

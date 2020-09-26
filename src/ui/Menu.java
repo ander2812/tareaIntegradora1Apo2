@@ -14,11 +14,13 @@ public class Menu {
     Register register;
     Update update;
     App application;
+    Serealizable Serealizable;
 
     public Menu() throws NumberFormatException, IOException {
         application = new App();
         register = new Register(application);
         update = new Update(application);
+        Serealizable = new Serealizable(application);
         pMenu();
     }
 
@@ -29,7 +31,7 @@ public class Menu {
         do {
 
             System.out.println(
-                    "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8) search client  \n (9) to list \n (10) closed");
+                    "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Export restaurant information \n (7) export product information \n (8) search client  \n (9) to list \n (10) closed");
             opt = Integer.parseInt(br.readLine());
 
             switch (opt) {
@@ -80,32 +82,41 @@ public class Menu {
 
                     break;
 
+                case 6:
+                    Serealizable.restaurantsCSV();
+                    break;
+
                 case 7:
+                    Serealizable.productsCSV();
                     break;
 
                 case 8:
-                register.searchClient();
+                    register.searchClient();
                     break;
 
                 case 9:
-                    System.out
-                            .println("please enter the information you want to list \n\n (1) Restaurant \n (2) Client");
+                    System.out.println(
+                            "please enter the information you want to list \n\n (1) Restaurant \n (2) Client \n (3) Product");
                     opt = Integer.parseInt(br.readLine());
 
                     switch (opt) {
                         case 1:
-                        register.restaurantList();
+                            register.restaurantList();
 
                             break;
 
                         case 2:
-                        register.clientList();
+                            register.clientList();
+                            break;
+
+                        case 3:
+                            register.productList();
                             break;
                     }
                     break;
 
                 case 10:
-                System.out.println("-------------thanks for using our services----------------");
+                    System.out.println("-------------thanks for using our services----------------");
                     break;
             }
 

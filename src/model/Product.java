@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 public class Product{
 
     private String code;
@@ -7,6 +8,7 @@ public class Product{
     private double coste;
     private String idOfRestaurant;
     private int quantity;
+    
 
     public Product(String code, String name, String description, double coste, String idOfRestaurant, int quantity) {
         this.code = code;

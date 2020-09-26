@@ -60,6 +60,21 @@ public class Restaurant{
         theProduct.add(product);
     }
 
+    public void bubbleSortProduct() {
+		for (int i = 0; i < theProduct.size()-1; i++) {
+			for (int j = 0; j < theProduct.size()-i-1; j++) {
+				Product n1 = theProduct.get(j);
+				Product n2 = theProduct.get(j+1);
+				if(n1.equals(n2)) {
+					theProduct.set(j, n2);
+					theProduct.set(j+1, n1);
+				}
+			}
+		}
+	}
+
+   
+
 
     
     
