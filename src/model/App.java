@@ -1,8 +1,6 @@
 package model;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -10,7 +8,7 @@ public class App {
     private List<Restaurant> theRestaurants;
     private List<Client> theClients;
     private List<Order> theOrders;
-    //private static App application;
+    private static App application;
 
     public App() {
         theClients = new ArrayList<>();
@@ -27,12 +25,12 @@ public class App {
 
     }
 
-    //public static App getInstance() {
-       // if (application == null) {
-           // application = new App();
-       // }
-       // return application;
-   // }
+    public static App getInstance() {
+        if (application == null) {
+            application = new App();
+       }
+        return application;
+    }
 
     public void addClient(String name, String typeId, String id, String telephone, String address) {
 

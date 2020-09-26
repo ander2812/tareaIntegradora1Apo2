@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
+import exception.DocNumberException;
+import exception.TypeDocumentException;
 
 public class Register {
     Main main;
@@ -17,7 +19,7 @@ public class Register {
 
     public Register(App application) {
         this.application = application;
-        //application = App.getInstance();
+        application = App.getInstance();
 
     }
 
