@@ -8,7 +8,6 @@ import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Collections;
 
 public class Register {
     Main main;
@@ -23,25 +22,24 @@ public class Register {
     }
 
     public void regClient() throws IOException {
-            System.out.println("Please enter customer date");
-            System.out.println(" ");
+        System.out.println("Please enter customer date");
+        System.out.println(" ");
 
-            System.out.println("whats is the client's name?");
-            String name = br.readLine();
-            System.out.println("whats is the client's id?");
-            String id = br.readLine();
-            System.out.println("whats is the client's type id?");
-            String typeId = br.readLine();
-            System.out.println("whats is the client's telephone?");
-            String telephone = br.readLine();
-            System.out.println("whats is the client's address?");
-            String address = br.readLine();
+        System.out.println("whats is the client's name?");
+        String name = br.readLine();
+        System.out.println("whats is the client's id?");
+        String id = br.readLine();
+        System.out.println("whats is the client's type id?");
+        String typeId = br.readLine();
+        System.out.println("whats is the client's telephone?");
+        String telephone = br.readLine();
+        System.out.println("whats is the client's address?");
+        String address = br.readLine();
 
-            application.addClient(name, typeId, id, telephone, address);
-           
+        application.addClient(name, typeId, id, telephone, address);
 
-            System.out.println("the client has been register successfully");
-            System.out.println(" ");
+        System.out.println("the client has been register successfully");
+        System.out.println(" ");
     }
 
     public void registerProduct() throws NumberFormatException, IOException {
@@ -68,7 +66,7 @@ public class Register {
     }
 
     public void regOrder() throws IOException {
-       
+
         System.out.println("Please enter order date");
         System.out.println(" ");
 
@@ -80,34 +78,67 @@ public class Register {
         System.out.println("whats is the id restaurant's?");
         String restaurantId = br.readLine();
         Date date = new Date();
+        System.out.println("please enter how many products you want to add");
+        int opt = Integer.parseInt(br.readLine());
 
+       
         Order theNewOrder = new Order(orderCode, orderStatus, date, clientId, restaurantId);
 
-       application.addOrder(theNewOrder);
+        application.addOrder(theNewOrder); 
+
+        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
+            for (int j = 0; j <application.getTheRestaurants().get(i).getTheProduct().size() ; j++) {
+
+                if(restaurantId.equals(application.getTheClients().get(i).getClientId())){
+                    Product product = application.getTheRestaurants().get(i).getTheProduct().get(j);
+    
+                    System.out.println("product # " + j);
+                    System.out.println("the name product is: " + product.getName());
+                    System.out.println("the description product is: " + product.getDescription());
+                    System.out.println("the coste product is: " + product.getCoste());
+                }
+                
+            }
+           
+            
+        }
+
+        for (int i = 0; i < opt; i++) {
+
+            System.out.println("enter the number product you want to add " + i+1);
+            opt = Integer.parseInt(br.readLine());
+
+            theNewOrder.addProduct(application.getTheRestaurants().get(i).getTheProduct().get(opt));
+
+
+
+
+            
+        }
 
     }
 
     public void registerRestaurant() throws NumberFormatException, IOException {
 
-            System.out.println("Please enter restaurant date");
-            System.out.println(" ");
+        System.out.println("Please enter restaurant date");
+        System.out.println(" ");
 
-            System.out.println("whats is the restaurant's name?");
-            String name = br.readLine();
-            System.out.println("whats is the restaurant's id?");
-            String id = br.readLine();
-            System.out.println("whats is the restaurant's name of administrator?");
-            String nameOfAdministrator = br.readLine();
+        System.out.println("whats is the restaurant's name?");
+        String name = br.readLine();
+        System.out.println("whats is the restaurant's id?");
+        String id = br.readLine();
+        System.out.println("whats is the restaurant's name of administrator?");
+        String nameOfAdministrator = br.readLine();
 
-            Restaurant theNRestaurant = new Restaurant(name, id, nameOfAdministrator);
+        Restaurant theNRestaurant = new Restaurant(name, id, nameOfAdministrator);
 
-            application.addRestaurant(theNRestaurant);
+        application.addRestaurant(theNRestaurant);
 
-            System.out.println("the restaurant has been register successfully");
-            System.out.println(" ");
+        System.out.println("the restaurant has been register successfully");
+        System.out.println(" ");
     }
 
-    public void restaurantList(){
+    public void restaurantList() {
         application.sortByName();
         for (int i = 0; i < application.getTheRestaurants().size(); i++) {
             Restaurant restaurant = application.getTheRestaurants().get(i);
@@ -116,13 +147,13 @@ public class Register {
             System.out.println("the restaurant's id is: " + restaurant.getId());
             System.out.println("the restaurant's name of administrator is: " + restaurant.getNameOfAdministrator());
             System.out.println(" ");
-            
+
         }
     }
 
-    public void clientList(){
+    public void clientList() {
         application.sortByTelephone();
-            for (int i = 0; i < application.getTheClients().size(); i++) {
+        for (int i = 0; i < application.getTheClients().size(); i++) {
             Client client = application.getTheClients().get(i);
 
             System.out.println("the client's name is: " + client.getName());
@@ -131,8 +162,10 @@ public class Register {
             System.out.println("the clients telephone is : " + client.getTelephone());
             System.out.println("the clients addres is: " + client.getAddress());
             System.out.println(" ");
-            
+
         }
     }
+
+
 
 }

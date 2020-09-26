@@ -39,6 +39,7 @@ public class App {
         Client client = new Client(name, typeId, id, telephone, address);
 
         theClients.add(client);
+        sortByClientName();
 
     }
 
@@ -103,8 +104,22 @@ public class App {
         Collections.sort(theRestaurants, nc);
     }
 
-    public void sortByTelephone(){
+    public void sortByTelephone() {
         Collections.sort(theClients);
+    }
+
+    public void sortByClientName() {
+        Comparator<Client> cn;
+
+        cn = new Comparator<Client>() {
+            public int compare(Client n1, Client n2) {
+                int comp;
+                comp = n1.compareTo(n2);
+                return comp;
+            }
+        };
+
+        Collections.sort(theClients, cn);
     }
 
 }

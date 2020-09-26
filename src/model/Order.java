@@ -1,5 +1,7 @@
 package model;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Order {
 
@@ -10,8 +12,10 @@ public class Order {
     public final static String ENTREGADO="entregado";
     public final static String EN_PROCESO="en proceso";
     public final static String ENVIADO="enviado";
+    private List<Product> productsAdd;
 
     public String orderStatus;
+	public Object getProductsAdd;
 
     public Order(String orderCode, String orderStatus, Date date, String clientId, String restaurantId) {
         this.orderCode = orderCode;
@@ -20,6 +24,7 @@ public class Order {
         this.restaurantId = restaurantId;
         this.orderStatus = orderStatus;
         date = new Date();
+        productsAdd = new ArrayList<>();
     }
 
     public String getOrderCode() {
@@ -72,6 +77,19 @@ public class Order {
 
     public static String getEnviado() {
         return ENVIADO;
+    }
+
+    public List<Product> getProductsAdd() {
+        return productsAdd;
+    }
+
+    public void setProductsAdd(List<Product> productsAdd) {
+        this.productsAdd = productsAdd;
+    }
+
+    public void addProduct(Product product){
+        productsAdd.add(product);
+
     }
     
 }

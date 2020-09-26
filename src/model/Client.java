@@ -58,30 +58,21 @@ public class Client implements Comparable<Client> {
 
     @Override
     public int compareTo(Client otherClient) {
-        int comp=0;
-        int i=0;
+        int comp = 0;
+        int telephon1 = Integer.parseInt(telephone);
+        int telephone2 = Integer.parseInt(otherClient.getTelephone());
 
-        while ( i == telephone.length()-1) {
+        if (telephon1 > telephone2) {
+            comp = 1;
 
-            if(telephone.charAt(i) < otherClient.getTelephone().charAt(i)){
-                comp = 1;
-    
-            }else if(telephone.charAt(i) > otherClient.getTelephone().charAt(i)){
-                comp = -1;
-            }else{
-                comp = 0;
-            }
-
-            
+        } else if (telephon1 < telephone2) {
+            comp = -1;
+        } else {
+            comp = 0;
         }
 
-           
         return comp;
-       
-       
 
-    }  
-
-
+    }
 
 }
