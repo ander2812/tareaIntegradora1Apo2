@@ -17,7 +17,7 @@ public class Register {
 
     public Register(App application) {
         this.application = application;
-        application = App.getInstance();
+        //application = App.getInstance();
 
     }
 
@@ -65,36 +65,42 @@ public class Register {
 
     }
 
-    public void regOrder() throws IOException {
+    public void regOrder() throws NumberFormatException, IOException {
+        System.out.println("How many orders do you want to register?");
+        int opt = Integer.parseInt(br.readLine());
+        String orderStatus = " ";
 
-        System.out.println("Please enter order date");
-        System.out.println(" ");
+        for (int i = 0; i < opt; i++) {
+            String orderCode = String.valueOf((int) (1000000 * Math.random()));
 
-        String orderCode = String.valueOf((int) (10000000 * Math.random()));
-        System.out.println("whats is the id client's?");
-        String clientId = br.readLine();
-        System.out.println("whats is the status order's?");
-        String orderStatus = br.readLine();
-        System.out.println("whats is the id restaurant's?");
-        String restaurantId = br.readLine();
-        Date date = new Date();
+            Date date = new Date();
 
-        Order theNewOrder = new Order(orderCode, orderStatus, date, clientId, restaurantId);
+            System.out.println("Enter the client's document: ");
+            String clientId = br.readLine();
+            System.out.println("Enter the ID of the restaurant");
+            String restaurantId = br.readLine();
 
-        application.addOrder(theNewOrder);
+            System.out.println("Enter dof order status");
+            System.out.println("(1).REQUESTED");
+            System.out.println("(2).IN PROCESS");
+            System.out.println("(3).SENT");
+            System.out.println("(4).DElIVERED");
 
-        //System.out.println("please enter the product code to which you want to add");
-       // String code = br.readLine();
+            opt = Integer.parseInt(br.readLine());
 
-        //application.addProductToOrder(code);
-
-      
-
-    
-
+            if (opt == 1) {
+                orderStatus = "Requested";
+            } else if (opt == 2) {
+                orderStatus = "Process";
+            } else if (opt == 3) {
+                orderStatus = "Sent";
+            } else if (opt == 4) {
+                orderStatus = "Delivered";
+            }
+            Order theNewOrder = new Order(orderCode, orderStatus, date, clientId, restaurantId);
+            application.addOrders(theNewOrder);
+        }
     }
-
-   
 
     public void registerRestaurant() throws NumberFormatException, IOException {
 
@@ -142,6 +148,37 @@ public class Register {
             System.out.println(" ");
 
         }
+    }
+
+    public void searchClient() throws IOException {
+
+        System.out.println("enter the client ID to search");
+        String name = br.readLine();
+
+        for (int i = 0; i < application.getTheClients().size(); i++) {
+
+            if(name.equals(application.getTheClients().get(i).getClientId())){
+
+                System.out.println("the search client is: ");
+
+                Client client = application.getTheClients().get(i);
+
+                System.out.println("the client's name is: " + client.getName());
+                System.out.println("the client's id is: " + client.getClientId());
+                System.out.println("the client's type ID is: " + client.getTypeId());
+                System.out.println("the clients telephone is : " + client.getTelephone());
+                System.out.println("the clients addres is: " + client.getAddress());
+                System.out.println(" ");
+
+                double Tini = System.currentTimeMillis();
+
+
+
+            }
+            
+        }
+
+       
     }
 
 }

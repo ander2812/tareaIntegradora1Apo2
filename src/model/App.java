@@ -10,7 +10,7 @@ public class App {
     private List<Restaurant> theRestaurants;
     private List<Client> theClients;
     private List<Order> theOrders;
-    private static App application;
+    //private static App application;
 
     public App() {
         theClients = new ArrayList<>();
@@ -27,12 +27,12 @@ public class App {
 
     }
 
-    public static App getInstance() {
-        if (application == null) {
-            application = new App();
-        }
-        return application;
-    }
+    //public static App getInstance() {
+       // if (application == null) {
+           // application = new App();
+       // }
+       // return application;
+   // }
 
     public void addClient(String name, String typeId, String id, String telephone, String address) {
 
@@ -53,20 +53,9 @@ public class App {
 
     }
 
-    public void addOrder(Order theNewOrder) {
+    public void addOrders(Order theNewOrder) {
 
         theOrders.add(theNewOrder);
-
-    }
-
-    public void addRestaurant(String name, String id, String nameOfAdministrator) {
-        Restaurant restaurant = new Restaurant(name, id, nameOfAdministrator);
-        theRestaurants.add(restaurant);
-    }
-
-    public void addOrder(String orderCode, String orderStatus, Date date, String clientId, String restaurantId) {
-        Order order = new Order(orderCode, orderStatus, date, clientId, restaurantId);
-        theOrders.add(order);
 
     }
 
@@ -122,25 +111,7 @@ public class App {
         Collections.sort(theClients, cn);
     }
 
-    public void addProductToOrder(String code){
-
-       
-
-        for (int i = 0; i < theRestaurants.size(); i++) {
-
-            for (int j = 0; j < theRestaurants.get(i).getTheProduct().size(); j++) {
-
-                if(code.equalsIgnoreCase(theRestaurants.get(i).getTheProduct().get(j).getCode())) {
-                    theOrders.get(i).addProduct(theRestaurants.get(i).getTheProduct().get(j));
-                    
-                }
-                
-            }
-
-                
-
-        }
-    }
+   
 
 
 }

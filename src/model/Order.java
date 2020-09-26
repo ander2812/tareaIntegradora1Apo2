@@ -15,7 +15,6 @@ public class Order {
     private List<Product> productsAdd;
 
     public String orderStatus;
-	public Object getProductsAdd;
 
     public Order(String orderCode, String orderStatus, Date date, String clientId, String restaurantId) {
         this.orderCode = orderCode;
@@ -67,16 +66,9 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public static String getEntregado() {
-        return ENTREGADO;
-    }
+    public void addProduct(Product product){
+        productsAdd.add(product);
 
-    public static String getEnProceso() {
-        return EN_PROCESO;
-    }
-
-    public static String getEnviado() {
-        return ENVIADO;
     }
 
     public List<Product> getProductsAdd() {
@@ -85,11 +77,6 @@ public class Order {
 
     public void setProductsAdd(List<Product> productsAdd) {
         this.productsAdd = productsAdd;
-    }
-
-    public void addProduct(Product product){
-        productsAdd.add(product);
-
     }
     
 }

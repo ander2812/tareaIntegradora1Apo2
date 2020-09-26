@@ -29,7 +29,7 @@ public class Menu {
         do {
 
             System.out.println(
-                    "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8)  \n (9) to list \n (10) closed");
+                    "Enter an option \n\n (1) Register client \n (2) Register product \n (3) Register order \n (4) Register restaurants \n (5) Update \n (6) Save information \n (7) print \n (8) search client  \n (9) to list \n (10) closed");
             opt = Integer.parseInt(br.readLine());
 
             switch (opt) {
