@@ -152,14 +152,18 @@ public class Register {
 
     public void searchClient() throws IOException {
 
+        double startTime = System.currentTimeMillis();
+
         System.out.println("enter the client ID to search");
         String name = br.readLine();
+        System.out.println(" ");
 
         for (int i = 0; i < application.getTheClients().size(); i++) {
 
             if(name.equals(application.getTheClients().get(i).getClientId())){
 
                 System.out.println("the search client is: ");
+                System.out.println(" ");
 
                 Client client = application.getTheClients().get(i);
 
@@ -170,7 +174,11 @@ public class Register {
                 System.out.println("the clients addres is: " + client.getAddress());
                 System.out.println(" ");
 
-                double Tini = System.currentTimeMillis();
+                
+                double endTime = System.currentTimeMillis();
+                double duration = (endTime - startTime);
+
+                System.out.println("the search duration is: " + duration);
 
 
 

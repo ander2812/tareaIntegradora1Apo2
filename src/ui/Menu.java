@@ -84,6 +84,7 @@ public class Menu {
                     break;
 
                 case 8:
+                register.searchClient();
                     break;
 
                 case 9:
