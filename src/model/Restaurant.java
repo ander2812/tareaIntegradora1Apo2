@@ -1,7 +1,13 @@
 package model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-public class Restaurant{
+public class Restaurant implements Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     private List<Product> theProduct;
 
     private String name;

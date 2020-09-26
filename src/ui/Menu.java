@@ -14,13 +14,13 @@ public class Menu {
     Register register;
     Update update;
     App application;
-    Serealizable Serealizable;
+    Serializable Serealizable;
 
     public Menu() throws NumberFormatException, IOException {
         application = new App();
         register = new Register(application);
         update = new Update(application);
-        Serealizable = new Serealizable(application);
+        Serealizable = new Serializable(application);
         pMenu();
     }
 

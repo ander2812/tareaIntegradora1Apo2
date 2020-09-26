@@ -1,8 +1,13 @@
 package model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Product{
+public class Product implements Serializable{
 
-    private String code;
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private String code;
     private String name;
     private String description;
     private double coste;

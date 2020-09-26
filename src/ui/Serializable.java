@@ -11,10 +11,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import model.*;
 
-public class Serealizable {
+public class Serializable {
     App application = new App();
 
-    public Serealizable(App application) {
+    public Serializable(App application) {
         this.application = application;
 
     }
