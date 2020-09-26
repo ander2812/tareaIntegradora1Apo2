@@ -78,45 +78,23 @@ public class Register {
         System.out.println("whats is the id restaurant's?");
         String restaurantId = br.readLine();
         Date date = new Date();
-        System.out.println("please enter how many products you want to add");
-        int opt = Integer.parseInt(br.readLine());
 
-       
         Order theNewOrder = new Order(orderCode, orderStatus, date, clientId, restaurantId);
 
-        application.addOrder(theNewOrder); 
+        application.addOrder(theNewOrder);
 
-        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
-            for (int j = 0; j <application.getTheRestaurants().get(i).getTheProduct().size() ; j++) {
+        //System.out.println("please enter the product code to which you want to add");
+       // String code = br.readLine();
 
-                if(restaurantId.equals(application.getTheClients().get(i).getClientId())){
-                    Product product = application.getTheRestaurants().get(i).getTheProduct().get(j);
+        //application.addProductToOrder(code);
+
+      
+
     
-                    System.out.println("product # " + j);
-                    System.out.println("the name product is: " + product.getName());
-                    System.out.println("the description product is: " + product.getDescription());
-                    System.out.println("the coste product is: " + product.getCoste());
-                }
-                
-            }
-           
-            
-        }
-
-        for (int i = 0; i < opt; i++) {
-
-            System.out.println("enter the number product you want to add " + i+1);
-            opt = Integer.parseInt(br.readLine());
-
-            theNewOrder.addProduct(application.getTheRestaurants().get(i).getTheProduct().get(opt));
-
-
-
-
-            
-        }
 
     }
+
+   
 
     public void registerRestaurant() throws NumberFormatException, IOException {
 
@@ -165,7 +143,5 @@ public class Register {
 
         }
     }
-
-
 
 }

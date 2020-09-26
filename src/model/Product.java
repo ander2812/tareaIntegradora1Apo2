@@ -1,12 +1,12 @@
 package model;
 public class Product{
 
-    public String code;
-    public String name;
-    public String description;
-    public double coste;
-    public String idOfRestaurant;
-    public int quantity;
+    private String code;
+    private String name;
+    private String description;
+    private double coste;
+    private String idOfRestaurant;
+    private int quantity;
 
     public Product(String code, String name, String description, double coste, String idOfRestaurant, int quantity) {
         this.code = code;

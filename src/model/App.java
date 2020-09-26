@@ -122,4 +122,27 @@ public class App {
         Collections.sort(theClients, cn);
     }
 
+    public void addProductToOrder(String code){
+
+       
+
+        for (int i = 0; i < theRestaurants.size(); i++) {
+
+            for (int j = 0; j < theRestaurants.get(i).getTheProduct().size(); j++) {
+
+                if(code.equalsIgnoreCase(theRestaurants.get(i).getTheProduct().get(j).getCode())) {
+                    theOrders.get(i).addProduct(theRestaurants.get(i).getTheProduct().get(j));
+                    
+                }
+                
+            }
+
+                
+
+        }
+    }
+
+
 }
+
+
