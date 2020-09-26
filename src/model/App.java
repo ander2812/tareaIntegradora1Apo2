@@ -15,10 +15,10 @@ public class App {
     public App() {
         theClients = new ArrayList<>();
         theRestaurants = new ArrayList<>();
-        theClients.add(new Client("paola", "cc", "12345", "12345", "aasdf"));
-        theClients.add(new Client("Arturo", "cc", "123456", "12345", "aasdf"));
-        theClients.add(new Client("Andrea", "cc", "1234567", "12345", "aasdf"));
-        theClients.add(new Client("Julian", "cc", "12345678", "12345", "aasdf"));
+        theClients.add(new Client("paola", "cc", "454667", "365767", "aasdf"));
+        theClients.add(new Client("Arturo", "cc", "5757578", "5657688", "aasdf"));
+        theClients.add(new Client("Andrea", "cc", "464657", "6455667", "aasdf"));
+        theClients.add(new Client("Julian", "cc", "56476779", "574656768", "aasdf"));
 
         theRestaurants.add(new Restaurant("crepes", "12345678", "Andrea"));
         theRestaurants.add(new Restaurant("wafles", "123456", "Paola"));
@@ -100,7 +100,11 @@ public class App {
 
     public void sortByName() {
         NameComparator nc = new NameComparator();
-        Collections.sort(theClients, nc);
+        Collections.sort(theRestaurants, nc);
+    }
+
+    public void sortByTelephone(){
+        Collections.sort(theClients);
     }
 
 }

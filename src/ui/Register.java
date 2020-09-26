@@ -38,8 +38,6 @@ public class Register {
             String address = br.readLine();
 
             application.addClient(name, typeId, id, telephone, address);
-
-            application.sortByName();
            
 
             System.out.println("the client has been register successfully");
@@ -110,6 +108,7 @@ public class Register {
     }
 
     public void restaurantList(){
+        application.sortByName();
         for (int i = 0; i < application.getTheRestaurants().size(); i++) {
             Restaurant restaurant = application.getTheRestaurants().get(i);
 
@@ -122,8 +121,7 @@ public class Register {
     }
 
     public void clientList(){
-
-            application.sortByName();
+        application.sortByTelephone();
             for (int i = 0; i < application.getTheClients().size(); i++) {
             Client client = application.getTheClients().get(i);
 
