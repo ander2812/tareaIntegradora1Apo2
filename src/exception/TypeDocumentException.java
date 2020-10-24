@@ -2,24 +2,17 @@ package exception;
 
 public class TypeDocumentException extends Exception {
 
-    private String typeDoc;
+    private final String typeId;
 
-    public TypeDocumentException(String typeDoc ){
+    public TypeDocumentException(String typeId ){
 
         super("The type document number can not enter. ");
-        this.typeDoc=typeDoc;
-
-
-
-
-
+        this.typeId =typeId;
 
     }
 
-    public String getTypeDoc() {
-        return typeDoc;
+    public String getTypeId() {
+        return typeId;
     }
-
-
 
 }

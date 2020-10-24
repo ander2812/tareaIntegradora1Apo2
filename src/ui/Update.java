@@ -1,17 +1,14 @@
 package ui;
 
-import model.*;
+import model.App;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Update {
     Main main;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     App application;
 
     public Update(App application) {
@@ -122,62 +119,62 @@ public class Update {
 
     public void updateInformationProduct() throws NumberFormatException, IOException {
         System.out.println("please enter the code of the product you want update");
-        String code  = br.readLine();
+        String code = br.readLine();
         System.out.println(" ");
 
         for (int i = 0; i < application.getTheRestaurants().size(); i++) {
 
-            for (int j = 0; j <application.getTheRestaurants().get(i).getTheProduct()
-            .size(); j++) {
-                
-                if((code.equalsIgnoreCase(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode()))){
+            for (int j = 0; j < application.getTheRestaurants().get(i).getTheProduct()
+                    .size(); j++) {
+
+                if ((code.equalsIgnoreCase(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode()))) {
                     System.out.println(
-                        "please enter the information of the product you want to update \n\n (1) code \n (2) name \n (3) description \n (4) coste \n (5) idOfRestaurant");
-                int opt = Integer.parseInt(br.readLine());
+                            "please enter the information of the product you want to update \n\n (1) code \n (2) name \n (3) description \n (4) coste \n (5) idOfRestaurant");
+                    int opt = Integer.parseInt(br.readLine());
 
-                switch (opt) {
-                    case 1:
-                        System.out.println("enter the new code");
-                        String newCode = br.readLine();
-                        application.getTheRestaurants().get(i).getTheProduct().get(j).setCode(newCode);
-                        System.out.println("the product information is update successfully");
+                    switch (opt) {
+                        case 1:
+                            System.out.println("enter the new code");
+                            String newCode = br.readLine();
+                            application.getTheRestaurants().get(i).getTheProduct().get(j).setCode(newCode);
+                            System.out.println("the product information is update successfully");
 
-                        break;
+                            break;
 
-                    case 2:
-                        System.out.println("enter the new name");
-                        String name = br.readLine();
-                        application.getTheRestaurants().get(i).getTheProduct().get(j).setName(name);;
-                        System.out.println("the product information is update successfully");
-                        break;
+                        case 2:
+                            System.out.println("enter the new name");
+                            String name = br.readLine();
+                            application.getTheRestaurants().get(i).getTheProduct().get(j).setName(name);
+                            System.out.println("the product information is update successfully");
+                            break;
 
-                    case 3:
-                        System.out.println("enter the new description");
-                        String description = br.readLine();
-                        application.getTheRestaurants().get(i).getTheProduct().get(j).setDescription(description);
-                        System.out.println("the product information is update successfully");
-                        break;
+                        case 3:
+                            System.out.println("enter the new description");
+                            String description = br.readLine();
+                            application.getTheRestaurants().get(i).getTheProduct().get(j).setDescription(description);
+                            System.out.println("the product information is update successfully");
+                            break;
 
-                    case 4:
-                        System.out.println("enter the new coste");
-                        double coste = Double.parseDouble(br.readLine());
-                        application.getTheRestaurants().get(i).getTheProduct().get(j).setCoste(coste);
-                        System.out.println("the product information is update successfully");
-                        break;
+                        case 4:
+                            System.out.println("enter the new coste");
+                            double coste = Double.parseDouble(br.readLine());
+                            application.getTheRestaurants().get(i).getTheProduct().get(j).setCoste(coste);
+                            System.out.println("the product information is update successfully");
+                            break;
 
-                    case 5:
-                        System.out.println("enter the new ID of restaurant");
-                        String idOfRestaurant = br.readLine();
-                        application.getTheRestaurants().get(i).getTheProduct().get(j).setIdOfRestaurant(idOfRestaurant);
-                        System.out.println("the product information is update successfully");
-                        break;
+                        case 5:
+                            System.out.println("enter the new ID of restaurant");
+                            String idOfRestaurant = br.readLine();
+                            application.getTheRestaurants().get(i).getTheProduct().get(j).setIdOfRestaurant(idOfRestaurant);
+                            System.out.println("the product information is update successfully");
+                            break;
 
-                }
+                    }
 
                 }
             }
 
-           
+
         }
     }
 
@@ -210,11 +207,11 @@ public class Update {
                         System.out.println("the client information is update successfully");
                         break;
 
-                        case 3:
+                    case 3:
                         System.out.println("enter the new order status");
                         String orderStatus = br.readLine();
 
-                        
+
                         application.getTheOrders().get(i).setOrderStatus(orderStatus);
                         System.out.println("the order information is update successfully");
                         break;

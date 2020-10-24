@@ -1,22 +1,18 @@
 package ui;
+import exception.ClientNotFoundException;
+import model.App;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import model.*;
+import java.io.*;
 
 public class Menu {
     Main main;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     Register register;
     Update update;
     App application;
     Serializable Serealizable;
 
-    public Menu() throws NumberFormatException, IOException {
+    public Menu() throws NumberFormatException, IOException, ClientNotFoundException {
         application = new App();
         register = new Register(application);
         update = new Update(application);
@@ -24,7 +20,7 @@ public class Menu {
         pMenu();
     }
 
-    public void pMenu() throws NumberFormatException, IOException {
+    public void pMenu() throws NumberFormatException, IOException, ClientNotFoundException {
 
         int opt;
 
@@ -112,6 +108,10 @@ public class Menu {
                         case 3:
                             register.productList();
                             break;
+
+                        case 4:
+                            register.orderList();
+                            break;
                     }
                     break;
 
@@ -123,5 +123,4 @@ public class Menu {
         } while (opt != 10);
 
     }
-
 }

@@ -1,46 +1,56 @@
 package ui;
 
-import model.*;
+import exception.ClientNotFoundException;
+import model.App;
+import model.Order;
+import model.Product;
+import model.Restaurant;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
-import exception.DocNumberException;
-import exception.TypeDocumentException;
 
 public class Register {
     Main main;
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     App application;
+    String exist;
 
     public Register(App application) {
         this.application = application;
-        application = App.getInstance();
 
     }
 
     public void regClient() throws IOException {
-        System.out.println("Please enter customer date");
-        System.out.println(" ");
-
-        System.out.println("whats is the client's name?");
-        String name = br.readLine();
         System.out.println("whats is the client's id?");
         String id = br.readLine();
-        System.out.println("whats is the client's type id?");
-        String typeId = br.readLine();
-        System.out.println("whats is the client's telephone?");
-        String telephone = br.readLine();
-        System.out.println("whats is the client's address?");
-        String address = br.readLine();
+        for (int i = 0; i < application.getTheClients().size() ; i++) {
 
-        application.addClient(name, typeId, id, telephone, address);
+            if(id.equals(application.getTheClients().get(i).getClientId())){
+                exist = application.getTheClients().get(i).getClientId();
+            }
 
-        System.out.println("the client has been register successfully");
+
+        }
+        if(id.equals(exist)){
+            System.out.println("the client exist");
+        }else{
+            System.out.println("Please enter customer date");
+            System.out.println(" ");
+
+            System.out.println("whats is the client's name?");
+            String name = br.readLine();
+
+            System.out.println("whats is the client's type id?");
+            String typeId = br.readLine();
+            System.out.println("whats is the client's telephone?");
+            String telephone = br.readLine();
+            System.out.println("whats is the client's address?");
+            String address = br.readLine();
+
+            application.addClient(name, typeId, id, telephone, address);
+            System.out.println("the client has been register successfully");
+        }
+
         System.out.println(" ");
     }
 
@@ -51,34 +61,52 @@ public class Register {
         String restaurantId = br.readLine();
         System.out.println("whats is the code product's?");
         String code = br.readLine();
-        System.out.println("whats is the name product's?");
-        String name = br.readLine();
-        System.out.println("whats is the description product's?");
-        String description = br.readLine();
-        System.out.println("whats is the coste product's?");
-        double coste = Double.parseDouble(br.readLine());
-        System.out.println("whats is the quantity product's?");
-        int quantity = Integer.parseInt(br.readLine());
-        System.out.println(" ");
+        for (int i = 0; i < application.getTheRestaurants().size() ; i++) {
+            for (int j = 0; j < application.getTheRestaurants().get(i).getTheProduct().size(); j++) {
+                if(code.equals(application.getTheRestaurants().get(i).getTheProduct().get(j).getCode())){
+                    exist = application.getTheRestaurants().get(i).getTheProduct().get(j).getCode();
+                }
+            }
 
-        Product theNewProduct = new Product(code, name, description, coste, restaurantId, quantity);
 
-        application.addProductToARestaurant(restaurantId, theNewProduct);
+
+
+        }
+
+        if(code.equals(exist)){
+            System.out.println("the client exist");
+        }else{
+
+            System.out.println("whats is the name product's?");
+            String name = br.readLine();
+            System.out.println("whats is the description product's?");
+            String description = br.readLine();
+            System.out.println("whats is the coste product's?");
+            double coste = Double.parseDouble(br.readLine());
+            System.out.println("whats is the quantity product's?");
+            int quantity = Integer.parseInt(br.readLine());
+            System.out.println(" ");
+
+            Product theNewProduct = new Product(code, name, description, coste, restaurantId, quantity);
+
+            application.addProductToARestaurant(restaurantId, theNewProduct);
+
+        }
+
 
     }
 
     public void regOrder() throws NumberFormatException, IOException {
         System.out.println("How many orders do you want to register?");
-        int opt = Integer.parseInt(br.readLine());
+        int option = Integer.parseInt(br.readLine());
         String orderStatus = " ";
-
-        for (int i = 0; i < opt; i++) {
-            String orderCode = String.valueOf((int) (1000000 * Math.random()));
-
-            Date date = new Date();
 
             System.out.println("Enter the client's document: ");
             String clientId = br.readLine();
+            String orderCode = String.valueOf((int) (1000000 * Math.random()));
+            Date date = new Date();
+
+        for (int i = 0; i < option; i++) {
             System.out.println("Enter the ID of the restaurant");
             String restaurantId = br.readLine();
 
@@ -88,7 +116,7 @@ public class Register {
             System.out.println("(3).SENT");
             System.out.println("(4).DElIVERED");
 
-            opt = Integer.parseInt(br.readLine());
+            int opt = Integer.parseInt(br.readLine());
 
             if (opt == 1) {
                 orderStatus = "Requested";
@@ -108,19 +136,34 @@ public class Register {
 
         System.out.println("Please enter restaurant date");
         System.out.println(" ");
-
-        System.out.println("whats is the restaurant's name?");
-        String name = br.readLine();
         System.out.println("whats is the restaurant's id?");
         String id = br.readLine();
-        System.out.println("whats is the restaurant's name of administrator?");
-        String nameOfAdministrator = br.readLine();
+        for (int i = 0; i < application.getTheRestaurants().size() ; i++) {
 
-        Restaurant theNRestaurant = new Restaurant(name, id, nameOfAdministrator);
+            if(id.equals(application.getTheRestaurants().get(i).getId())){
+                exist = application.getTheRestaurants().get(i).getId();
+            }
 
-        application.addRestaurant(theNRestaurant);
 
-        System.out.println("the restaurant has been register successfully");
+        }
+
+        if(id.equals(exist)){
+            System.out.println("the restaurant exist");
+        }else{
+            System.out.println("whats is the restaurant's name?");
+            String name = br.readLine();
+            System.out.println("whats is the restaurant's name of administrator?");
+            String nameOfAdministrator = br.readLine();
+
+            Restaurant theNRestaurant = new Restaurant(name, id, nameOfAdministrator);
+
+            application.addRestaurant(theNRestaurant);
+            System.out.println("the restaurant has been register successfully");
+
+
+        }
+
+
         System.out.println(" ");
     }
 
@@ -160,51 +203,41 @@ public class Register {
     public void clientList() {
         application.sortByTelephone();
         for (int i = 0; i < application.getTheClients().size(); i++) {
-            Client client = application.getTheClients().get(i);
+            Order order = application.getTheOrders().get(i);
 
-            System.out.println("the client's name is: " + client.getName());
-            System.out.println("the client's id is: " + client.getClientId());
-            System.out.println("the client's type ID is: " + client.getTypeId());
-            System.out.println("the clients telephone is : " + client.getTelephone());
-            System.out.println("the clients addres is: " + client.getAddress());
+            System.out.println("the order` date is: " + order.getDate());
+            System.out.println("the order`s code is : " + order.getOrderCode());
+            System.out.println("the client's id is: " + order.getClientId());
+            System.out.println("the restaurant's id is: " + order.getRestaurantId());
+            System.out.println("the order's status is: " + order.getOrderStatus());
+
+
             System.out.println(" ");
 
         }
     }
 
-    public void searchClient() throws IOException {
-
-        double startTime = System.currentTimeMillis();
-
-        System.out.println("enter the client ID to search");
+    public void searchClient() throws IOException, ClientNotFoundException {
+        System.out.println("please enter the client name");
         String name = br.readLine();
-        System.out.println(" ");
+        application.searchClientLog(name);
 
-        for (int i = 0; i < application.getTheClients().size(); i++) {
+    }
 
-            if (name.equals(application.getTheClients().get(i).getClientId())) {
+    public void orderList(){
 
-                System.out.println("the search client is: ");
-                System.out.println(" ");
+        for (int i = 0; i < application.getTheRestaurants().size(); i++) {
+            Restaurant restaurant = application.getTheRestaurants().get(i);
 
-                Client client = application.getTheClients().get(i);
-
-                System.out.println("the client's name is: " + client.getName());
-                System.out.println("the client's id is: " + client.getClientId());
-                System.out.println("the client's type ID is: " + client.getTypeId());
-                System.out.println("the clients telephone is : " + client.getTelephone());
-                System.out.println("the clients addres is: " + client.getAddress());
-                System.out.println(" ");
-
-                double endTime = System.currentTimeMillis();
-                double duration = (endTime - startTime);
-
-                System.out.println("the search duration is: " + duration);
-
-            }
+            System.out.println("the restaurant's name is: " + restaurant.getName());
+            System.out.println("the restaurant's id is: " + restaurant.getId());
+            System.out.println("the restaurant's name of administrator is: " + restaurant.getNameOfAdministrator());
+            System.out.println(" ");
 
         }
 
     }
+
+
 
 }

@@ -1,18 +1,16 @@
-
 package ui;
 
+import model.App;
+import model.Product;
+import model.Restaurant;
+
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import model.*;
 
 public class Serializable {
-    App application = new App();
+    App application;
 
     public Serializable(App application) {
         this.application = application;

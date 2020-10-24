@@ -1,26 +1,21 @@
 package ui;
-import model.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
-public class Main{
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    Restaurant myRestaurant;
+import exception.ClientNotFoundException;
+
+import java.io.IOException;
+
+public class Main {
     Menu menu;
 
-    public Main() throws NumberFormatException, IOException {
+    public Main() throws NumberFormatException, IOException, ClientNotFoundException {
         welcomeMsg();
         new Menu();
 
     }
-    public static void main(String args[]) throws NumberFormatException, IOException {
+    public static void main(String[] args) throws NumberFormatException, IOException, ClientNotFoundException {
         new Main();
 
-        
+
 
     }
 
@@ -32,8 +27,9 @@ public class Main{
 
     }
 
-   
 
-    
+
+
 
 }
+
